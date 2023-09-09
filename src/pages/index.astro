@@ -1,23 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+const imgs = (await Astro.glob('../gallery/*{md,mdx}'))
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="bg-zinc-900 py-10 min-h-screen text-white">
-<h1 class="text-5xl text-center">Image Gallery</h1>
-	</main>
-	<script>
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-				if (!user) {
-					window.netlifyIdentity.on("login", () => {
-						document.location.href = "/admin/";
-					});
-				}
-			});
-		}
-	</script>
+<Layout title='Welcome to Astro.'>
+  <main class='bg-zinc-900 py-10 min-h-screen text-white'>
+    <h1 class='text-5xl text-center'>Image Gallery</h1>
+		{imgs.map((img) => (
+			<div>
+				<img src={`../${img.frontmatter.heroImage}`} />
+			</div>
+		))}
+  </main>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', (user) => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
 </Layout>
-
-
