@@ -8,7 +8,7 @@ const imgs = (await Astro.glob('../gallery/*{md,mdx}'))
     <h1 class='text-5xl text-center'>Image Gallery</h1>
 		{imgs.map((img) => (
 			<div>
-				<img src={`../${img.frontmatter.heroImage}`} />
+				<img src={img.frontmatter.heroImage} />
 			</div>
 		))}
   </main>
