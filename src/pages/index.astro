@@ -7,6 +7,17 @@ import Layout from '../layouts/Layout.astro';
 	<main class="bg-zinc-900 py-10 min-h-screen text-white">
 <h1 class="text-5xl text-center">Image Gallery</h1>
 	</main>
+	<script>
+		if (window.netlifyIdentity) {
+			window.netlifyIdentity.on("init", user => {
+				if (!user) {
+					window.netlifyIdentity.on("login", () => {
+						document.location.href = "/admin/";
+					});
+				}
+			});
+		}
+	</script>
 </Layout>
 
 
