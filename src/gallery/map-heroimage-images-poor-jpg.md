@@ -1,0 +1,4 @@
+---
+heroImage:
+  - /images/poor.jpg
+---
